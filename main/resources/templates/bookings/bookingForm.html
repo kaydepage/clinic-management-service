@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Veterinarian Appointment</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/bookingForm.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script>
+        // Limits the date that the user can select to the current day and after
+        function setMinDate() {
+            const today = new Date();
+            const minDate = today.toISOString().split('T')[0]; // Date format (YYYY-MM-DD)
+            document.querySelector('input[name="date"]').setAttribute('min', minDate);
+        }
+
+        // Makes sure user cannot select a time earlier than the current time if the date is the current day
+        function validateTime() {
+            const dateInput = document.querySelector('input[name="date"]');
+            const timeSelect = document.querySelector('select[name="time"]');
+            const currentTime = new Date();
+            const selectedDate = new Date(dateInput.value);
+
+            if (selectedDate.toDateString() === currentTime.toDateString()) {
+                const selectedTime = timeSelect.value;
+                const selectedHour = parseInt(selectedTime.split(':')[0], 10); // Gets the hour (0-23)
+                const selectedMinute = parseInt(selectedTime.split(':')[1], 10); // Gets the minutes (0-59)
+
+                if (selectedHour < currentTime.getHours() ||
+                   (selectedHour === currentTime.getHours() && selectedMinute < currentTime.getMinutes())) {
+                    alert('You cannot select a time before the current time for this date.');
+                    timeSelect.value = '';
+                }
+            }
+        }
+        window.onload = setMinDate;
+    </script>
+</head>
+<body>
+<div th:replace="~{layout :: nav}"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="heading">Book a Veterinarian Appointment</h2>
+
+            <!-- Form 1: Date and Location -->
+            <form th:action="@{/bookings/newBooking/get-available-times}" method="get">
+                <input type="hidden" name="id" th:value="${workingId}"/>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Date</label>
+                    <div class="col-sm-8">
+                        <input type="date" name="date" class="form-control" required th:value="${selectedDate}"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Location</label>
+                    <div class="col-sm-8">
+                        <select name="location" class="form-control" required th:value="${selectedLocation}">
+                            <!-- <option value="">Select a Clinic</option> -->
+                            <option value="clinic1" th:selected="${selectedLocation == 'clinic1'}">Clinic 1</option>
+                            <option value="clinic2" th:selected="${selectedLocation == 'clinic2'}">Clinic 2</option>
+                            <option value="clinic3" th:selected="${selectedLocation == 'clinic3'}">Clinic 3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row justify-content-end">
+                    <div class="col-sm-5">
+                        <button class="form_btn btn btn-primary" type="submit">Next</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Form 2: Remaining Fields (Enabled after Form 1 is submitted) -->
+            <form th:action="@{/bookings/newBooking/add-booking}" method="post" th:if="${selectedDate != null && selectedLocation != null}">
+                <input type="hidden" name="date" th:value="${selectedDate}"/>
+                <input type="hidden" name="location" th:value="${selectedLocation}"/>
+                <input type="hidden" name="id" th:value="${workingId}"/>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Time</label>
+                    <div class="col-sm-8">
+                        <select name="time" class="form-control" required>
+                            <!-- <option value="">Select a time</option> -->
+                            <th:block th:each="time : ${availableTimes}">
+                                <option th:value="${time}" th:text="${time}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Pet Name</label>
+                    <div class="col-sm-8">
+                        <th:block th:if="${#lists.isEmpty(pets)}">
+                            <div class="alert alert-warning" role="alert">
+                                You have no pets registered. Please <a href="/registerPet">register one</a>.
+                            </div>
+                        </th:block>
+                        <th:block th:if="${!#lists.isEmpty(pets)}">
+                            <select name="petName" class="form-control" required>
+                                <option value="">Select a pet</option>
+                                <th:block th:each="pet : ${pets}">
+                                    <option th:value="${pet.name}" th:text="${pet.name}"></option>
+                                </th:block>
+                            </select>
+                        </th:block>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Reason for Visit</label>
+                    <div class="col-sm-8">
+                        <select name="visitReason" class="form-control" required>
+                            <option th:each="p : ${clinicPrices}" 
+                                th:value="${p.service} + ':' + ${p.price}" 
+                                th:text="${p.service} + ' -- ' + ${p.price}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row justify-content-end">
+                    <div class="col-sm-5">
+                        <button class="form_btn btn btn-primary" type="submit">Book Now</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

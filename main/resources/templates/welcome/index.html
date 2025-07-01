@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>VetCare</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div th:replace="~{layout :: nav}"></div>
+    <div class="homepage">
+        <div class="left-section">
+            <section class="text-center">
+                <h4 class="mb-4"><strong>Local Veterinarian Clinic Pricing</strong></h4>
+            </section>
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    <div class="card border border-dark">
+                        <div class="mx-2 card-body">
+                            <h5 class="card-title my-2 ">Clinic 1</h5>
+                            <a href="/bookings/newBooking?location=clinic1" data-mdb-ripple-init class="btn btn-primary d-block mb-2 mt-3 text-capitalize">Book Now</a>
+                        </div>
+                        <div class="card-footer">
+                            <p class="text-uppercase fw-bold" style="font-size: 12px;">Services offered</p>
+                            <ol class="list-unstyled mb-0 px-4">
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i><small>Vaccination ($25)</small>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i><small>General Consultation ($60)</small>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i><small>X-ray ($150)</small>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border border-dark">
+                        <div class="mx-2 card-body">
+                            <h5 class="card-title my-2 ">Clinic 2</h5>
+                            <a href="/bookings/newBooking?location=clinic2" data-mdb-ripple-init class="btn btn-primary d-block mb-2 mt-3 text-capitalize">Book Now</a>
+                        </div>
+                        <div class="card-footer">
+                            <p class="text-uppercase fw-bold" style="font-size: 12px;">Services offered</p>
+                            <ol class="list-unstyled mb-0 px-4">
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i><small>Vaccination ($40)</small>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i><small>General Consultation ($80)</small>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i><small>X-ray ($200)</small>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border border-dark">
+                        <div class="mx-2 card-body">
+                            <h5 class="card-title my-2 ">Clinic 3</h5>
+                            <a href="/bookings/newBooking?location=clinic3" data-mdb-ripple-init class="btn btn-primary d-block mb-2 mt-3 text-capitalize">Book Now</a>
+                        </div>
+                        <div class="card-footer">
+                            <p class="text-uppercase fw-bold" style="font-size: 12px;">Services offered</p>
+                            <ol class="list-unstyled mb-0 px-4">
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i><small>Vaccination ($60)</small>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i><small>General Consultation ($105)</small>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i><small>X-ray ($310)</small>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <h2 th:text="${message}">Welcome!</h2>
+            <img src="/images/unset-avatar.png" alt="Profile Picture" class="profile-pic">
+        </div>
+    </div>
+</body>
+</html>

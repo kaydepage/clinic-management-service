@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetCare | Educational Resources</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/resources.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar Fragment -->
+    <div th:replace="~{layout :: nav}"></div>
+
+    <div class="container">
+        <h1>Educational Resources</h1>
+
+        <!-- Custom Layout Grid -->
+        <div class="custom-grid">
+            <!-- Large Article -->
+            <a href="https://www.petmd.com/dog/care/dog-vaccinations-for-every-lifestage" target="_blank" class="grid-large">
+                <div class="title-overlay">Dog Vaccinations for Every Lifestage</div>
+                <img src="/images/dogvaccine.png" alt="Dog Vaccinations">
+            </a>
+        
+            <!-- Two Stacked Articles -->
+            <div class="grid-small">
+                <a href="https://www.petmd.com/general-health/the-effects-of-secondhand-smoke-on-pets" target="_blank" class="small-box">
+                    <div class="title-overlay">The Effects of Secondhand Smoke on Pets</div>
+                    <img src="/images/secondhandsmoke.png" alt="Secondhand Smoke Effects">
+                </a>
+                <a href="https://www.petmd.com/exotic/care/evr_ex_hm_how-to-give-your-hamster-a-bath" target="_blank" class="small-box">
+                    <div class="title-overlay">How to Give Your Hamster a Bath</div>
+                    <img src="/images/hamsterbath.png" alt="Hamster Bath">
+                </a>
+            </div>
+        </div>
+        
+        <!-- Section About Pet Care -->
+        <div class="pet-care-section">
+            <h2>What is Pet Care?</h2>
+            <p>Pet care is a fundamental aspect of responsible pet ownership, enhancing the lives of both pets and their owners. It promotes physical, mental, and emotional well-being.</p>
+            <p>Along with essentials like feeding and exercise, some pet owners choose to immortalize their beloved companions through pet commission artwork, capturing their unique personalities and creating a lasting tribute to their furry friends.</p>
+            <p class="related-link">Related: <a href="https://nalzo.com.au/blogs/tips/dogs-severe-anxiety" target="_blank">Reducing dogs with severe anxiety: 5 methods</a></p>
+        
+            <div class="why-care-section">
+                <h3>Why is Pet Care Important?</h3>
+                <p>Pet care is essential for the following reasons:</p>
+        
+                <ul class="importance-list">
+                    <li><strong>Promotes health and longevity:</strong> Proper pet care can enhance your pet's overall health, increase its lifespan, and prevent diseases or conditions such as dental disease, obesity, and heart conditions.</li>
+                    <li><strong>Supports psychological health:</strong> Caring for your pet helps reduce anxiety and depression in pets. Engaging with them regularly, playing, and showing affection can greatly improve their mental well-being.</li>
+                    <li><strong>Strengthens bonds:</strong> Regular interaction, training, and care foster a strong bond between you and your pet. This bond can be emotionally fulfilling for both you and your pet, leading to a happier and healthier life for your pet.</li>
+                    <li><strong>Prevents disease transmission:</strong> Responsible pet care, including regular vet check-ups and vaccinations, can reduce the risk of spreading animal diseases to humans and other animals. This is particularly important for zoonotic diseases.</li>
+                    <li><strong>Ensures comfort:</strong> Pets that are well cared for are more comfortable as their needs are met. This includes a clean living environment, regular grooming, and appropriate nutrition.</li>
+                    <li><strong>Encourages responsible ownership:</strong> Good pet care practices teach responsibility and empathy. It's a commitment that requires time, resources, and patience, but the rewards are immeasurable.</li>
+                </ul>
+        
+                <p class="related-link">Related: <a href="https://nalzo.com.au/blogs/tips/dog-friendly-backyard" target="_blank">10 tips to create a dog-friendly backyard</a></p>
+            </div>
+        </div>
+        
+        <!-- Ultimate Guide Section -->
+        <div class="how-to-care-section">
+            <h2>How to Care for Your Pets</h2>
+            <p>Caring for your pets involves various aspects, from understanding their nutritional needs to providing them with regular exercise and medical check-ups. Here's how you can be a better pet parent:</p>
+        
+            <div class="care-grid">
+                <div class="care-box">
+                    <img src="/images/nutrition.png" alt="Nutrition Icon">
+                    <h4>Nutrition</h4>
+                    <p>Provide proper diet and water to keep your pets energized and healthy.</p>
+                </div>
+                <div class="care-box">
+                    <img src="/images/exercise.png" alt="Exercise Icon">
+                    <h4>Exercise</h4>
+                    <p>Ensure your pets get daily physical activity for mental and physical health.</p>
+                </div>
+                <div class="care-box">
+                    <img src="/images/groom.png" alt="Grooming Icon">
+                    <h4>Grooming</h4>
+                    <p>Regular grooming keeps your pets looking great and feeling comfortable.</p>
+                </div>
+                <div class="care-box">
+                    <img src="/images/clinic.png" alt="Healthcare Icon">
+                    <h4>Healthcare</h4>
+                    <p>Regular vet check-ups and preventive care are key for long, healthy lives.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Watch & Learn Section -->
+        <h2 class="watch-learn-title">Watch & Learn</h2>
+        
+        <div class="video-section">
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/XE_fXjhtDEU" frameborder="0" allowfullscreen></iframe>
+                <p class="video-title">Pet Care Tips</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/aj9O3tkILew" frameborder="0" allowfullscreen></iframe>
+                <p class="video-title">Pet Vaccines</p>
+            </div>
+        </div>        
+
+        <!-- Veterinary Medicine Trends -->
+        <section class="vet-medicine-trends">
+            <div class="content-wrapper">
+                <!-- Innovation Section -->
+                <section class="innovation-section">
+                    <div class="innovation-content">
+                        <div class="text-content">
+                            <h1>Innovation in Veterinary Care</h1>
+                            <p>Emerging innovations in pet health care highlight the potential for further improving pet health, welfare, and livelihoods. These innovations range from new vaccines, diagnostics and treatments to new services and products that are more affordable, convenient, and accurate.</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="/images/kitten.png" alt="Kitten image">
+                        </div>
+                    </div>
+                    <h2>What are some of the latest veterinary breakthroughs for pets?</h2>
+                    <div class="breakthrough">
+                        <ul>
+                            <li><strong>Gene therapy treatments for cancer</strong>, which accounts for more than a quarter of all deaths in pedigree dogs in the UK.</li>
+                            <li><strong>The market for pet food and care products continues to grow around the world.</strong> In Europe, the market is worth an estimated €22 billion a year, with pet health products valued at an additional €2.1 billion, and the industry employing around 300,000 people in total.</li>
+                        </ul>
+                        <div class="breakthrough-image">
+                            <img src="/images/magniglass.png" alt="Magnifying glass icon">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dr. Wolfgang Dohne Quote Section -->
+                <section class="quote-section">
+                    <div class="quote-content">
+                        <div class="quote-image">
+                            <img src="/images/drwolfgang.png" alt="Dr. Wolfgang Dohne">
+                        </div>
+                        <div class="quote-text">
+                            <blockquote>
+                                “We have to become smarter when it comes to the use of antimicrobials – we will see more alternatives to the use of antibiotics and possibly other treatment forms.”
+                                <span class="quote-author">Dr. Wolfgang Dohne, Veterinarian and Senior Vice President, Federation of European Companion Animal Veterinary Associations</span>
+                            </blockquote>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Access to Medicines Section -->
+                <section class="access-medicine-section">
+                    <h2>Access to medicines</h2>
+                    <p>In both developed and developing countries, there are several limitations which are holding back access to medicines.</p>
+                    <h3>Are veterinary medicines reaching pets in need?</h3>
+                    <p>In a survey conducted by the World Small Animal Veterinary Association (WSAVA), three-quarters of veterinary associations surveyed indicated that access to veterinary medical products hampered their ability to meet the needs of their patients and provide quality service.</p>
+                    <p>Major reasons cited for lack of access to medicines included the regulatory environment in respondents’ countries, as well as manufacturer-related issues, such as lack of interest due to smaller market sizes and subsequently higher product costs in those markets.</p>
+                    <p>The Covid-19 pandemic also impacted access to medicines, despite veterinary practices in many countries being listed as “essential” services and exempt from many closures affecting other industries.</p>
+                </section>
+        
+                <!-- Vaccine Hesitancy Section -->
+                <section class="vaccine-hesitancy-section">
+                    <div class="vaccine-content">
+                        <div class="text-content">
+                            <h2>Is there a ‘vaccine hesitancy’ movement within pet health?</h2>
+                            <p>Even prior to the Covid-19 pandemic, vaccine hesitancy was on the rise among pet owners, hindering progress on pet health.</p>
+                            <ul>
+                                <li>In the UK, approximately a quarter of pet owners said their dog did not have a primary course of vaccinations when young, despite vaccinations preventing a range of common diseases.</li>
+                            </ul>
+                            <p>More reliable, systemic data is essential to evaluate whether vaccine hesitancy is growing amongst pet owners, particularly in the wake of Covid-19.</p>
+                        </div>
+                        <div class="vaccine-image">
+                            <img src="/images/petsyringe.webp" alt="Dog and syringe icon">
+                            <p>In the UK, approximately a quarter of pet owners said their dog did not have a primary course of vaccinations when young, despite vaccinations preventing a range of common diseases.</p>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Is Telemedicine Increasing Section -->
+                <section class="telemedicine-increase-section">
+                    <h2>Is telemedicine use increasing?</h2>
+                    <p>The Covid-19 pandemic saw more veterinary practices offering telemedicine:</p>
+                    <ul>
+                        <li>A HealthforAnimals survey conducted in fall 2020 found almost half (47%) of pet owners stated their veterinarian offered digital/remote consultations, up from 20% prior to the pandemic.</li>
+                        <li>The HealthforAnimals survey found 75% of owners who had a telemedicine consultation said they were ‘satisfied’ or ‘extremely satisfied’ with the service.</li>
+                        <li>A survey published in the Journal of American Veterinary Medical Association confirmed these findings, finding that ‘telemedicine substantially increased’ during the pandemic.</li>
+                    </ul>
+                    <img src="/images/telemedicine.png" alt="Telemedicine icon">
+                </section>
+        
+                <!-- Telemedicine Hurdles Section -->
+                <section class="telemedicine-hurdles-section">
+                    <h2>What are the hurdles to telemedicine?</h2>
+                    <p>A global survey of pet owners conducted during the Covid-19 pandemic revealed that nearly two-thirds, or 60 percent, of pet owners were willing to pay for veterinary advice or consultations via telemedicine services.</p>
+                    <p>However, challenges remain in adopting telemedicine practices globally. For instance:</p>
+                    <ul>
+                        <li>In Brazil, a draft bill to legislate veterinary telemedicine was shelved in 2020, despite the ongoing challenges posed by the pandemic, leaving traditional veterinary services to handle the strain.</li>
+                    </ul>
+                    <p>The Federation of Veterinarians in Europe recommends allowing the use of telemedicine, but more regulatory clarity is needed in many regions to make it a permanent solution for veterinary care.</p>
+                
+                    <div class="quote-section">
+                        <div class="quote-image">
+                            <img src="/images/edival-santos.png" alt="Edival Santos Image">
+                        </div>
+                        <div class="quote-box">
+                            <blockquote>“There is not a regulation for telemedicine for animal health in some countries, so it was really complicated. Brazil was one of them.”</blockquote>
+                            <p><strong>Edival Santos, DVM</strong><br>Pet Health Industry Regional Executive, Brazil</p>
+                        </div>
+                    </div>
+                </section>              
+            </div>
+        </section>
+
+        <!-- References Section -->
+        <section class="references-section">
+            <div class="content-wrapper">
+                <h2>References</h2>
+                <ul>
+                    <li><a href="https://nalzo.com.au/blogs/tips/pet-care-guide-australia?srsltid=AfmBOor7cH0w_VGjdG0YfWtIsGCA3hxASfXe0ujf4v2__25xje09s8VM" target="_blank">Pet Care Guide Australia</a></li>
+                    <li><a href="https://healthforanimals.org/reports/pet-care-report/global-trends-in-pet-care/#telemedicine" target="_blank">Global Trends in Pet Care</a></li>
+                    <li><a href="https://www.forbes.com/councils/forbesbusinesscouncil/2024/01/18/five-emerging-trends-in-pet-health-care-for-2024-and-beyond/" target="_blank">Five Emerging Trends in Pet Health Care for 2024 and Beyond</a></li>
+                    <li><a href="https://www.startus-insights.com/innovators-guide/veterinary-industry-trends/" target="_blank">Veterinary Industry Trends</a></li>
+                </ul>
+            </div>
+        </section>
+        
+    </div>
+</body>
+</html>

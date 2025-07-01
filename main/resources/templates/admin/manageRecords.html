@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/manageRecords.css">
+    <script>
+        function toggleMedicalForm() {
+            var form = document.getElementById("medicalRecordForm");
+            if (form.style.display === "none") {
+                form.style.display = "block";
+            } else {
+                form.style.display = "none";
+            }
+        }
+        
+        function toggleVaccinationForm() {
+            var form = document.getElementById("vaccinationRecordForm");
+            if (form.style.display === "none") {
+                form.style.display = "block";
+            } else {
+                form.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div th:fragment="nav">
+        <div class="header">
+            <div class="logo">
+                <img src="/images/vetCareLogo.png" alt="VetCare Logo">
+            </div>
+            <h1>Admin Dashboard</h1>
+        </div>
+        <div class="navbar">
+            <div class="navbar-left">
+                <a th:href="@{/admin/manage-records}">Manage Records</a>
+                <a th:href="@{/admin/view-bookings}">View Bookings</a>
+                <a th:href="@{/admin/view-orders}">View Orders</a>
+                <a th:href="@{/logout}">Log Out</a>
+            </div>
+        </div>
+    </div>
+
+    <h1>Manage Medical and Vaccination Records</h1>
+
+    <!-- Display success message for medical record submission -->
+    <div th:if="${medicalRecordSuccess}">
+        <p style="color: green; text-align: center;">Medical record successfully added!</p>
+    </div>
+
+    <!-- Display success message for vaccination record submission -->
+    <div th:if="${vaccinationRecordSuccess}">
+        <p style="color: green; text-align: center;">Vaccination record successfully added!</p>
+    </div>
+
+    <div>
+        <!-- Add Medical Record Button -->
+        <h2>Medical Record</h2>
+        <button type="button" onclick="toggleMedicalForm()">Add</button>
+        <!-- Medical Record Form -->
+        <div id="medicalRecordForm" style="display: none;">
+            <form th:action="@{/admin/add-record}" method="post">
+                Owner's Email: <input type="text" name="owner" required/><br>
+                Pet Name: <input type="text" name="petName" required/><br>
+                Date: <input type="date" name="date" required/><br>
+                Clinic Name: <input type="text" name="location" required/><br>
+                Description: <input type="text" name="description" required/><br>
+                Prescription: <input type="text" name="prescription" value="None"/><br>
+                Treatment: <textarea name="treatment">None</textarea><br>
+                <button type="submit">Confirm</button>
+            </form>
+        </div>
+
+        <!-- Add Vaccination Record Button -->
+        <h2>Vaccination Record</h2>
+        <button type="button" onclick="toggleVaccinationForm()">Add</button>
+        <!-- Vaccination Record Form -->
+        <div id="vaccinationRecordForm" style="display: none;">
+            <form th:action="@{/admin/add-record}" method="post">
+                Owner's email: <input type="text" name="owner" required/><br>
+                Pet Name: <input type="text" name="petName" required/><br>
+                Date: <input type="date" name="date" required/><br>
+                Clinic Name: <input type="text" name="location" required/><br>
+                <input type="hidden" name="description" value="vaccination"/>
+                Vaccine: <input type="text" name="prescription" value="None"/><br>
+                <input type="hidden" name="treatment" value="None" />
+                <button type="submit">Confirm</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Booking List</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/bookings.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+<div th:replace="~{layout :: nav}"></div>
+<div>
+    <h1>Upcoming Appointments</h1>
+
+    <!-- Display message if there are no bookings -->
+    <div th:if="${#lists.isEmpty(bookings)}">
+        <p>You have no upcoming appointments scheduled.</p>
+    </div>
+
+    <!-- Button to create a new booking -->
+    <a class="create-btn" href="/bookings/newBooking">Create New Booking</a>
+
+    <table th:unless="${#lists.isEmpty(bookings)}">
+        <thead>
+        <tr>
+            <th>Pet Owner</th>
+            <th>Pet Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="b : ${bookings}">
+            <td><span th:text="${b.owner}">Pet Owner</span></td>
+            <td><span th:text="${b.petName}">Pet Name</span></td>
+            <td><span th:text="${b.date}">Date</span></td>
+            <td><span th:text="${b.time}">Time</span></td>
+            <td><span th:text="${b.location}">Location</span></td>
+            <td><span th:text="${b.price}">Price</span></td>
+            <!-- Button to cancel booking -->
+            <td>
+                <div class="btn-container">
+                    <form th:action="@{/bookings/update/{id}(id=${b.id})}" method="get" >
+                        <button class="action-btn update-btn" type="submit">Update Booking</button>
+                    </form>
+                    <form th:action="@{/bookings/{id}(id=${b.id})}" method="post" onsubmit="return confirm('Are you sure you want to cancel this booking?');">
+                        <input type="hidden" name="_method" value="delete" />
+                        <button class="action-btn cancel-btn" type="submit">Cancel Booking</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+

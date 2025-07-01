@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>VetCare</title>
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+    <div th:fragment="nav">
+        <div class="navbar">
+            <div class="navbar-left">
+                <div class="logo">
+                    <a href="/home"><img src="/images/vetCareLogo.png" alt="VetCare Logo"></a>
+                </div>
+                <a href="/home" class="nav-link">Home</a>
+                <a href="/bookings" class="nav-link">Bookings</a>
+                <a href="/records" class="nav-link">Medical Records</a>
+                <a href="/prescription" class="nav-link">Prescription Management</a>
+                <a href="/eduresources" class="nav-link">Educational Resources</a>
+            </div>
+            <div class="navbar-right">
+                <a href="/profile" class="nav-link">Profile</a>
+                <a href="/logout" class="nav-link">Log Out</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

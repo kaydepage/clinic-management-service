@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout.html}"
+>
+  <head>
+    <title>Medical Records</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/records.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div th:replace="~{layout :: nav}"></div>
+    <div class="body-title">Medical Records</div>
+    <div class="content">
+      <div class="buttons">
+        <button
+          id="vaccination-btn"
+          onclick="showVaccinations()"
+          class="active"
+        >
+          Vaccination Records
+        </button>
+        <button id="history-btn" onclick="showHistory()">
+          Medical History
+        </button>
+      </div>
+      <div class="records">
+        <div class="vaccinations">
+          <table>
+            <tr>
+              <th>Pet Treated</th>
+              <th>Location</th>
+              <th>Vaccination</th>
+              <th>Date Administered</th>
+              <th>Next Dosage</th>
+            </tr>
+            <tr th:each="v : ${vacRecords}">
+              <td><span th:text="${v.petName}"></span></td>
+              <td><span th:text="${v.location}"></span></td>
+              <td><span th:text="${v.description}"></span></td>
+              <td><span th:text="${v.date}"></span></td>
+              <td>2025-07-19</td>
+            </tr>
+          </table>
+          <div class="download-btn-container">
+            <a
+              th:href="@{/records/download/vaccinations}"
+              class="btn download-btn"
+              >Download Vaccination Records</a
+            >
+          </div>
+        </div>
+        <div class="history hidden">
+          <div th:if="${#lists.isEmpty(medRecords)}">
+            <p>No medical records available at the moment.</p>
+          </div>
+          <div th:if="${!#lists.isEmpty(medRecords)}">
+            <table>
+              <tr>
+                <th>Date</th>
+                <th>Clinic Name</th>
+                <th>Pet Treated</th>
+                <th>Assessment</th>
+                <th>Prescribed Medication</th>
+                <th>Treatments</th>
+              </tr>
+              <tr th:each="m : ${medRecords}">
+                <td><span th:text="${m.date}"></span></td>
+                <td><span th:text="${m.location}"></span></td>
+                <td><span th:text="${m.petName}"></span></td>
+                <td><span th:text="${m.description}"></span></td>
+                <td><span th:text="${m.prescription}"></span></td>
+                <td><span th:text="${m.treatment}"></span></td>
+              </tr>
+            </table>
+          </div>
+          <div class="download-btn-container">
+            <a
+              th:href="@{/records/download/medical-history}"
+              class="btn download-btn"
+              >Download Medical History</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function showVaccinations() {
+        document.querySelector(".vaccinations").style.display = "block";
+        document.querySelector(".history").style.display = "none";
+
+        document.getElementById("vaccination-btn").classList.add("active");
+        document.getElementById("history-btn").classList.remove("active");
+      }
+
+      function showHistory() {
+        document.querySelector(".history").style.display = "block";
+        document.querySelector(".vaccinations").style.display = "none";
+
+        document.getElementById("history-btn").classList.add("active");
+        document.getElementById("vaccination-btn").classList.remove("active");
+      }
+    </script>
+  </body>
+</html>

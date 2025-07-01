@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/profile.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>VetCare</title>
+  </head>
+  <body>
+    <div th:replace="~{layout :: nav}"></div>
+    <div class="container">
+      <div class="left-section">
+        <img
+          src="/images/unset-avatar.png"
+          alt="Profile Picture"
+          class="profile-pic"
+        />
+      </div>
+      <div class="right-section">
+        <strong>Name:</strong>
+        <p th:text="${name}"></p>
+        <strong>Email:</strong>
+        <p th:text="${email}"></p>
+      </div>
+    </div>
+    <div class="pets-title">Your Pets</div>
+    <div class="table-container">
+      <!-- Check if the pets list is empty -->
+      <div th:if="${#lists.isEmpty(pets)}">
+        <p>No pets have been registered.</p>
+      </div>
+      <div th:if="${!#lists.isEmpty(pets)}">
+        <table class="pets-table">
+          <thead>
+            <tr>
+              <th>Pet Name</th>
+              <th>Breed</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="pet : ${pets}">
+              <td th:text="${pet.name}">Pet Name</td>
+              <td th:text="${pet.breed}">Breed</td>
+              <td th:text="${pet.age} + ' years'">Age</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <a href="/registerPet"><button class="register-button">Register Pet</button></a>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/prescription.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <title>Prescription Management</title>
+  </head>
+  <body>
+    <div th:replace="~{layout :: nav}"></div>
+    <div class="body-title">Prescription Management</div>
+
+    <!-- Display a message if no prescriptions are available -->
+    <div
+      th:if="${prescriptions == null} or ${prescriptions.isEmpty()}"
+      class="no-prescription"
+    >
+      <p>No prescriptions available at the moment.</p>
+    </div>
+
+    <div
+      th:if="${prescriptions != null} and ${!prescriptions.isEmpty()}"
+      class="prescriptions"
+    >
+      <table>
+        <thead>
+          <tr>
+            <th>Prescription Name</th>
+            <th>Dosage</th>
+            <th>Quantity</th>
+            <th>Directions</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop through prescriptions -->
+          <tr th:each="prescription : ${prescriptions}">
+            <td th:text="${prescription.name}">Prescription Name</td>
+            <td th:text="${prescription.dosageInfo}">Dosage</td>
+            <td th:text="${prescription.quantity}">Quantity</td>
+            <td th:text="${prescription.description}">Directions</td>
+            <td>
+              <a
+                th:href="@{/refill(prescriptionName=${prescription.name})}"
+                class="reorder-btn"
+                >Reorder</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

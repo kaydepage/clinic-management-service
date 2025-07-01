@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard - View Bookings</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/viewBookings.css">
+
+</head>
+<body>
+    <div th:fragment="nav">
+        <div class="header">
+            <div class="logo">
+                <img src="/images/vetCareLogo.png" alt="VetCare Logo">
+            </div>
+            <h1>Admin Dashboard</h1>
+        </div>
+        <div class="navbar">
+            <div class="navbar-left">
+                <a th:href="@{/admin/manage-records}">Manage Records</a>
+                <a th:href="@{/admin/view-bookings}">View Bookings</a>
+                <a th:href="@{/admin/view-orders}">View Orders</a>
+                <a th:href="@{/logout}">Log Out</a>
+            </div>
+        </div>
+    </div>
+
+    <h1>Bookings This Week</h1>
+
+    <!-- Table for displaying bookings -->
+    <table>
+        <thead>
+        <tr>
+            <th>Owner</th>
+            <th>Pet Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Check if the bookings list is empty -->
+        <tr th:if="${#lists.isEmpty(bookings)}">
+            <td colspan="5">No bookings for this week.</td>
+        </tr>
+
+        <!-- Display each booking if there are bookings -->
+        <tr th:each="booking : ${bookings}">
+            <td th:text="${booking.owner}"></td>
+            <td th:text="${booking.petName}"></td>
+            <td th:text="${booking.date}"></td>
+            <td th:text="${booking.time}"></td>
+            <td th:text="${booking.location}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

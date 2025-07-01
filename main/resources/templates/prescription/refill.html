@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/refill.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>VetCare Prescription Refill</title>
+</head>
+<body>
+    <div th:replace="~{layout :: nav}"></div>
+    <div class="body-title">Prescription Refill Form</div>
+    <div class="container">
+      <div class="left-section">
+        <div class="form">
+            <form action="/refill/refillOrder" method="POST">
+
+                <!-- Hidden field for prescription name -->
+                <input type="hidden" name="prescriptionName" th:value="${selectedPrescription.name}" />
+                <input type="hidden" name="quantity" th:value="${selectedPrescription.quantity}" />
+                <input type="hidden" name="totalPrice" th:value="${selectedPrescription.totalPrice}" />
+                <input type="hidden" name="prescriberLocation" th:value="${selectedPrescription.prescriberLocation}" />
+                <input type="hidden" name="dosageInfo" th:value="${selectedPrescription.dosageInfo}" />
+                <input type="hidden" name="petName" th:value="${selectedPrescription.petName}" />
+                <input type="hidden" name="ownerFirstName" th:value="${selectedPrescription.owner}" />
+
+                <!-- Shipping Address Section -->
+                <h3>Shipping Address</h3>
+                <label for="address">Street Address</label>
+                <input type="text" name="streetAddress" id="address" required />
+
+                <label for="city">City</label>
+                <input type="text" name="city" id="city" required />
+
+                <label for="state">State</label>
+                <input type="text" name="state" id="state" required />
+
+                <label for="postcode">Postcode</label>
+                <input type="text" name="postcode" id="postcode" required />
+
+                <button type="submit">Submit Refill Order</button>
+            </form>
+        </div>
+    </div>
+    <div class="right-section">
+      <div class="details-box">
+        <h3>Prescription Details</h3>
+        <p><strong>Prescription Name:</strong><span th:text="${selectedPrescription.name}"></span></p>
+        <p><strong>Dosage: </strong><span th:text="${selectedPrescription.dosageInfo}"></span></p>
+        <p><strong>Quantity: </strong><span th:text="${selectedPrescription.quantity}"></span></p>
+        <p class="price"> <strong>Total: </strong>$<span th:text="${selectedPrescription.totalPrice}"></span></p>
+        <br />
+        <h3>Personal Information</h3>
+        <p><strong>Name:</strong> <span th:text="${name}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${email}"></span</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

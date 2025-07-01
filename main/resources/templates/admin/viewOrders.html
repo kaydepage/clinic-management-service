@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard - View Orders</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/viewOrders.css">
+</head>
+<body>
+    <header th:fragment="nav">
+        <div class="header">
+            <div class="logo">
+                <img src="/images/vetCareLogo.png" alt="VetCare Logo">
+            </div>
+            <h1>Admin Dashboard</h1>
+        </div>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a th:href="@{/admin/manage-records}">Manage Records</a>
+                <a th:href="@{/admin/view-bookings}">View Bookings</a>
+                <a th:href="@{/admin/view-orders}">View Orders</a>
+                <a th:href="@{/logout}">Log Out</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Orders</h1>
+
+        <!-- Table for displaying orders -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Owner</th>
+                    <th>Prescription</th>
+                    <th>Quantity</th>
+                    <th>Delivery Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- If no orders, display message inside table -->
+                <tr th:if="${#lists.isEmpty(orders)}">
+                    <td colspan="4" style="text-align: center;">No orders found.</td>
+                </tr>
+
+                <!-- If there are orders, display them -->
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.ownerFirstName}"></td>
+                    <td th:text="${order.prescriptionName}"></td>
+                    <td th:text="${order.quantity}"></td>
+                    <td th:text="${order.streetAddress + ', ' + order.city + ', ' + order.state + ', ' + order.postcode}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

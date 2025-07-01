@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Logo and Navbar Styling */
+
+.header {
+    background-color: #1c7eed;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo img {
+    max-width: 80px;
+    height: auto;
+}
+
+.navbar {
+    background-color: #1c7eed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px;
+    border-bottom: 1px solid black;
+    margin-bottom: 5%;
+}
+
+.navbar-left,
+.navbar-right {
+    display: flex;
+    align-items: center;
+    height: 80px;
+}
+
+.navbar .nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #f7f7f7;
+}
+
+/* ------------- */
+
